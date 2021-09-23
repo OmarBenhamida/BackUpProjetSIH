@@ -1,0 +1,856 @@
+
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">clinique@gmail.com</a>
+        <i class="bi bi-phone"></i> +212 6615465664
+        <i class="bi bi-box-arrow-right"></i> <a [routerLink]='["/backoffice"]'> S'identifier</a>
+      </div>
+      <div class="d-none d-lg-flex social-links align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+      <h1 class="logo me-auto"><a href="index.html">SEHATI-صحتي</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Accueil</a></li>
+          <li><a class="nav-link scrollto" href="#about">À propos</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#departments">Departements</a></li>
+          <li><a class="nav-link scrollto" href="#doctors">Médecins</a></li>
+         <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>-->
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+      <a href="#dossierMedical" class="appointment-btn scrollto"><span class="d-none d-md-inline">Consultez Votre</span> Dossier Médical</a>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1>Welcome to SEHATI</h1>
+      <h2>L’équipe de Medlab vous accompagne au quotidien !</h2>
+      <a href="#about" class="btn-get-started scrollto">À propos</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-4 d-flex align-items-stretch">
+            <div class="content">
+              <h3>Pourquoi choisir SEHATI?</h3>
+              <p>
+                Nous sommes au service de votre SANTÉ et de votre bien etre, votre patrimoin le plus noble...
+              </p>
+              <div class="text-center">
+                <a href="#about" class="more-btn">Encore plus <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 d-flex align-items-stretch">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-receipt"></i>
+                    <h4>Dossiers médicaux électroniques</h4>
+                    <p>Le module de dossiers médicaux électroniques est conçu pour permettre aux praticiens de renseigner, annoter et archiver simplement les antécédents médicaux</p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-dna"></i>
+                    <h4>Centre de Biologie</h4>
+                    <p>Un laboratoire d'analyses médicales doté des dernières technologies
+                      Prélèvement à domicile
+                      ASTREINTE 24h/24 7j/7.  </p>
+                  </div>
+                </div>
+                <div class="col-xl-4 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="bx bx-plus-medical"></i>
+                    
+                    <h4>Le grand pole des urgences de RABAT</h4>
+                    <p>Ce Centre ouvert 24h/24 est considéré l’un des plus performants dans la région.</p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 video-box d-flex justify-content-center align-items-stretch position-relative">
+            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox play-btn mb-4"></a>
+          </div>
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>UNE EQUIPE MÉDICALE ET PARAMÉDICALE PERFORMANTE</h3>
+            <p>Notre clinique assure au quotidien ses services médicaux grâce à une équipe de plus de 50 praticiens dans tous les domaines de la médecine générale, spécialisée et de la chirurgie.</p>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-clinic"></i></div>
+              <h4 class="title"><a href="">Le personnel paramédical</a></h4>
+              <p class="description">Le personnel de notre clinique est constitué de jeunes universitaires qui sont à votre disposition pour vous fournir un service de qualité lors de votre hospitalisation .</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-task"></i></div>
+              <h4 class="title"><a href="">Le personnel administratif</a></h4>
+              <p class="description">Depuis la réservation de votre date d’intervention jusqu’à votre sortie et même après, ils planifient et vérifient avec le plus grand soin toutes les informations vous concernant qui conditionnent l’action des autres équipes.</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-briefcase"></i></div>
+              <h4 class="title"><a href="">Le personnel technique</a></h4>
+              <p class="description">Pour que votre séjour à la Clinique soit le plus agréable possible, le travail de nos agents administratifs et techniques doit être aussi discret qu’efficace.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="count-box">
+              <i class="fas fa-user-md"></i>
+              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Médecins</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+            <div class="count-box">
+              <i class="far fa-hospital"></i>
+              <span data-purecounter-start="0" data-purecounter-end="18" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Departements</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-flask"></i>
+              <span data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Laboratoires de recherche</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+            <div class="count-box">
+              <i class="fas fa-award"></i>
+              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Récompenses</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>Notre clinique accueille les patients dans un environnement répondant aux exigences de fonctionnalité, d’organisation hospitalière et de modernité.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-ambulance"></i></div>
+              <h4><a href="">Service d'Urgence</a></h4>
+              <p>Ce centre ouvert 24h/24 est considéré l’un des plus performants dans la région.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-microscope"></i></div>
+              <h4><a href="">Laboratoire</a></h4>
+              <p>Le laboratoire est disponible 24 h sur 24, assurant les urgences pour les malades hospitalisés dans la Clinique Agdal et les externes.
+
+                Prélèvements avec ou sans rendez-vous au laboratoire. </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-hospital-user"></i></div>
+              <h4><a href="">Médecine Interne</a></h4>
+              <p>Médecine Interne Générale: approche globale des problèmes médicaux de l'adulte, prise en charge des patients avec des pathologies multiples ou non différenciées: ex. fièvre prolongée, amaigrissement inexpliqué, ...</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-hand-holding-medical"></i></div>
+              <h4><a href="">Gynécologie, pédiatrie</a></h4>
+              <p>La Maternité de la Clinique répond aux exigences de confort, de contact entre la maman et son bébé, d'accueil du conjoint et de la famille, ainsi de ce que l'on est en droit d’attendre d'un établissement de pointe.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-bone"></i></div>
+              <h4><a href="">Traumatologie, orthopédie</a></h4>
+              <p>La Clinique met à la disposition des patients une équipe de spécialistes marocains en Traumatologie-Orthopédie dédiés aux différents aspects de la spécialité. Cette équipe assure les urgences traumatologiques les 24h de la journée, tous les jours de l’année.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-diagnoses"></i></div>
+              <h4><a href="">Radiologie</a></h4>
+              <p>URGENCES RADIOLOGIQUES 24H/24 et 365 JOURS/AN -L'Institut de radiologie de la Clinique est doté d'installations qui seront régulièrement remises à jour en fonction des derniers développements techniques.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-brain"></i></div>
+              <h4><a href="">Neurochirurgie</a></h4>
+              <p>Le service de Neurochirurgie est spécialisé dans la chirurgie du système nerveux (cerveau, moelle épinière, racines nerveuses et nerfs).</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-procedures"></i></div>
+              <h4><a href="">Chirurgie viscérale</a></h4>
+              <p>Les urgences de chirurgie digestive assurées 24h/24, 365 jours par an.
+                Cet établissement s'est doté des appareils les plus sophistiqués pour pratiquer la chirurgie endoscopique, appelée coeliochirurgie ou chirurgie laparoscopique.On a adopté une technique qui est certainement l'événement chirurgical de ces dix dernières années.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-user-md"></i></div>
+              <h4><a href="">Autres services</a></h4>
+              <p>Dermatologie Vénérologie
+                - Hématologie
+                - Néphrologie
+                - Neurologie
+                - Oto-Rhino-Laryngologique
+                - Pneumologie et Fibroscopie bronchique
+                - Rhumatologie</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    <!--Dossier medica-->
+      
+    <!-- ======= Dossier Medical Section ======= -->
+<section id="dossierMedical" class="appointment section-bg">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Consultez votre Dossier Médical</h2>
+      <p>Dès aujourd'hui, il est possible de consulter votre dossier médical en ligne. </p>
+    </div>
+
+    <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+      <div class="row">
+        <div class="col-md-4 form-group">
+          <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+          <div class="validate"></div>
+        </div>
+
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+          <input type="tel" class="form-control" name="phone" id="phone" placeholder="Tél " data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+          <div class="validate"></div>
+        </div>
+        <div class="col-md-4 form-group mt-3 mt-md-0">
+          <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" data-rule="email" data-msg="Please enter a valid email">
+          <div class="validate"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 form-group mt-3">
+          <input type="text" name="name" class="form-control" id="name" placeholder="Votre Prénom" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+          <div class="validate"></div>
+        </div>
+        <div class="col-md-4 form-group mt-3">
+          <input type="text" name="NoPatient" class="form-control" id="name" placeholder="No.Patient" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+          <div class="validate"></div>
+        </div>
+       <!-- <div class="col-md-4 form-group mt-3">
+          <select name="department" id="department" class="form-select">
+            <option value="">Select Department</option>
+            <option value="Department 1">Department 1</option>
+            <option value="Department 2">Department 2</option>
+            <option value="Department 3">Department 3</option>
+          </select>
+          <div class="validate"></div>
+        </div>
+        <div class="col-md-4 form-group mt-3">
+          <select name="doctor" id="doctor" class="form-select">
+            <option value="">Select Doctor</option>
+            <option value="Doctor 1">Doctor 1</option>
+            <option value="Doctor 2">Doctor 2</option>
+            <option value="Doctor 3">Doctor 3</option>
+          </select>
+          <div class="validate"></div>
+        </div>-->
+      </div>
+
+     <!-- <div class="form-group mt-3">
+        <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+        <div class="validate"></div>
+      </div>-->
+      <div class="mb-3">
+        <div class="loading">Loading</div>
+        <div class="error-message"></div>
+        <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+      </div>
+      <div class="text-center"><button type="submit">Consulter</button></div>
+    </form>
+
+  </div>
+</section><!-- End Dossier Medical Section -->
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Départements</h2>
+          <p>Chacun département veille à la personnalisation de l'accueil, associant à la qualité des soins, le respect de la dignité.</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Cardiologie</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Neurologie</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Hépatologie</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Pédiatrie</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Ophtalmologie</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-9 mt-4 mt-lg-0">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Cardiologie </h3>
+                    <p class="fst-italic">Cette unité est capable d'accueillir 24 heures sur 24 et 365 jours par an les urgences cardiologiques.</p>
+                    <p>Il existe au sein de la clinique une unité de soins intensifs coronariens de 8 lits monitorisés.
+                      L'unité est équipée de moniteurs de surveillance de dernière génération avec logiciel d'arythmie, mesure et monitorage de la pression artérielle, des pressions pulmonaires et du débit cardiaque, mesure et monitorage de la saturation en oxygène. L'équipement est complété par un respirateur lourd et une console d'assistance circulatoire par contre pulsion intra-aortique.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments-1.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Neurochirurgie</h3>
+                    <p class="fst-italic">La rééducation post-opératoire est prise en charge sur place par une physiothérapie moderne et performante.</p>
+                    <p>Le service de Neurochirurgie est spécialisé dans la chirurgie du système nerveux (cerveau, moelle épinière, racines nerveuses et nerfs). Les pathologies traitées sont diverses: neurotraumatismes, hernies discales , pathologies vasculaires tumorales ou fonctionnelles (Parkinson, épilepsie)… Chaque pathologie exige une prise en charge très spécifique, qui fait appel aux développements technologiques les plus récents. En collaboration avec le neurologue, le neurochirurgien recherche l’origine des problèmes provoqués par des affections du système nerveux et intervient chirurgicalement le cas échéant.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments-2.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Hépatologie</h3>
+                    <p class="fst-italic">L’hépato-gastro-entérologie s’attache à la prise en charge des maladies du tube digestif en général, foie et pancréas compris. </p>
+                    <p>Vu la fragilité et la sensibilité de certains endroits du corps, notamment l’anus, les examens pratiqués par le gastro-entérologue risquent d’être quelque peu inconfortables. Pour cela, le médecin doit rassurer le patient en lui développant un mode de communication adapté.Une équipe de 4 hépato-gastro-entérologues est à votre disposition dans notre Clinique</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments-3.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-4">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Gynécologie, pédiatrie</h3>
+                    <p class="fst-italic">Un PEDIATRE SPECIALISE en REANIMATION NEONATALE est présent en permanence dans l'Unité de réanimation néonatale de 5 lits attenante à la Maternité et la Nursery.</p>
+                    <p>La Maternité de la Clinique répond aux exigences de confort, de contact entre la maman et son bébé, d'accueil du conjoint et de la famille, ainsi de ce que l'on est en droit d’attendre d'un établissement de pointe. Les équipements médicaux et techniques, constamment réactualisés, sont également garants de la plus grande sécurité.Elle permet la prise en charge des grossesses à risque et des grossesses avec menace d’accouchement prématuré.</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments-4.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tab-5">
+                <div class="row">
+                  <div class="col-lg-8 details order-2 order-lg-1">
+                    <h3>Ophtalmologie</h3>
+                    <p class="fst-italic">Etablissement spécialisé en ophtalmologie, pour toutes les maladies de l’oeil et de la correction de la vision à Rabat.</p>
+                    <p>L'activité du pôle de Chirurgie Ophtalmologique est en plein essor. On pratique toute la chirurgie de l'oeil en particulier la chirurgie de la cataracte et celle du segment postérieur (décollement de rétine).
+                      Le service est doté d'un appareillage sophistiqué qui permet des microchirurgies de l'oeil dans les meilleures conditions de confort et de sécurité</p>
+                  </div>
+                  <div class="col-lg-4 text-center order-1 order-lg-2">
+                    <img src="assets/img/departments-5.jpg" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Departments Section -->
+
+    <!-- ======= Doctors Section ======= -->
+    <section id="doctors" class="doctors">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Médecins</h2>
+          <p>La clinique rassemble une équipe médicale diversifiée et constituée des meilleurs médecins. Notre mission est d’assurer une expérience chaleureuse et accueillante pour tous nos patients et leur accompagnant(s). Respect et professionnalisme sont les valeurs qui animent chaque jour l’équipe de notre clinique</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Walter White</h4>
+                <span>Chief Medical Officer</span>
+                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Sarah Jhonson</h4>
+                <span>Anesthesiologist</span>
+                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>William Anderson</h4>
+                <span>Cardiology</span>
+                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>Amanda Jepson</h4>
+                <span>Neurosurgeon</span>
+                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
+                <div class="social">
+                  <a href=""><i class="ri-twitter-fill"></i></a>
+                  <a href=""><i class="ri-facebook-fill"></i></a>
+                  <a href=""><i class="ri-instagram-fill"></i></a>
+                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Doctors Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+       <!--<section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                  Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque.
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section>-->
+    
+    
+    <!-- End Frequently Asked Questions Section -->
+
+ 
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Galerie</h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row no-gutters">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
+                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Contactez-Nous</h2>
+          <p></p>
+        </div>
+      </div>
+
+      <div>
+        
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3309.194225404546!2d-6.824848584917257!3d33.96184702993612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda714b28d23d6af%3A0x25f1ab7ba6495651!2sClinique%20Les%20Ambassadeurs!5e0!3m2!1sfr!2sma!4v1629377422498!5m2!1sfr!2sma" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="container">
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Localisation:</h4>
+                <p>Lotissement,al houda N°3  
+                  Suissi, 1000 Rabat</p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Tél:</h4>
+                <p>+1 5589 55488 55s</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Votre Nom" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Sujet" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Envoyer</button></div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+   <!-- <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>MedLab</h3>
+            <p>
+              A108 Adam Street <br>
+              New York, NY 535022<br>
+              United States <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>-->
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>MedLab</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+          Designed by <a href="#">Us !</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+

@@ -1,0 +1,21 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ArticleComponent } from './article/article.component';
+import { OperationstockComponent } from './operationstock/operationstock.component';
+import { StockComponent } from './stock.component';
+import { StockRoutingModule } from './stock-routing.module';
+
+
+
+@NgModule({
+  declarations: [
+    ArticleComponent,
+    OperationstockComponent,
+    StockComponent
+  ],
+  imports: [
+    CommonModule,
+    StockRoutingModule
+  ]
+})
+export class StockModule { }

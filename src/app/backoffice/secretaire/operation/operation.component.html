@@ -1,0 +1,341 @@
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Planifier une opération</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Patient</button>
+                                <div class="dropdown-menu" id="operationpatient" style="width:100%;"><input
+                                        class="form-control form-control dropdown-search-input"
+                                        onkeyup="foperationpatient()" id="operationpatientinput" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="operationpatienttable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>CIN</th>
+                                            <th>No.Patient</th>
+                                            <th>Date de naissance</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var operationpatienttable = document.getElementById('operationpatienttable').getElementsByTagName('tbody')[0];
+                            var operationpatient = document.getElementById('operationpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < operationpatient.length; i++) {
+                                operationpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = operationpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            operationpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function foperationpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("operationpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("operationpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Médecin</button>
+                                <div class="dropdown-menu" id="operationmedcin" style="width:100%;"><input
+                                        onkeyup="foperationmedcin()" id="operationmedcininput"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="operationmedcintable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>No.Personnel</th>
+                                            <th>Specialité</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var operationmedcintable = document.getElementById('operationmedcintable').getElementsByTagName('tbody')[0];
+                            var operationmedcin = document.getElementById('operationmedcin').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < operationmedcin.length; i++) {
+                                if (l < 1) {
+                                    operationmedcin[i].onclick = function () {
+                                        var newRow = operationmedcintable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            operationmedcintable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+
+                            function foperationmedcin() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("operationmedcininput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("operationmedcin");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Type Operation</button>
+                                <div class="dropdown-menu" id="operationtype" style="width:100%;"><input
+                                        onkeyup="foperationtype()" id="operationtypeinput"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="operationtypetable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>No.Personnel</th>
+                                            <th>Specialité</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var operationtypetable = document.getElementById('operationtypetable').getElementsByTagName('tbody')[0];
+                            var operationtype = document.getElementById('operationtype').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < operationtype.length; i++) {
+                                if (l < 1) {
+                                    operationtype[i].onclick = function () {
+                                        var newRow = operationtypetable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            operationtypetable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+                            function foperationtype() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("operationtypeinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("operationtype");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Salle d&#39;opération </button>
+                                <div class="dropdown-menu" id="operationsalle" style="width:100%;"><input
+                                        id="operationsalleinput" onkeyup="foperationsalle()"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="operationsalletable">
+                                    <thead>
+                                        <tr>
+                                            <th>Numéro</th>
+                                            <th>Etage</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <script>
+                            var l = 0;
+                            var operationsalletable = document.getElementById('operationsalletable').getElementsByTagName('tbody')[0];
+                            var operationsalle = document.getElementById('operationsalle').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < operationsalle.length; i++) {
+                                if (l < 1) {
+                                    operationsalle[i].onclick = function () {
+                                        var newRow = operationsalletable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 2; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            operationsalletable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+                            function foperationsalle() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("operationsalleinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("operationsalle");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="mb-3"><label class="form-label" for="address"><br></label><input class="form-control"
+                        type="text" id="address" placeholder="Motife" name="address"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Date :</strong></label><input
+                                class="form-control" type="date"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="country"><strong>Heure
+                                    :</strong><br></label><input class="form-control" type="text" id="country"
+                                placeholder="00H" name="country"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2">
+                                <div class="dropdown-menu" style="width:100%;"><input
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.."><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>

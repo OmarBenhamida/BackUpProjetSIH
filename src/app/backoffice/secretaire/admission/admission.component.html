@@ -1,0 +1,845 @@
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Admission&nbsp;</p>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 text-nowrap">
+                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label
+                            class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+                                <option value="10" selected="">10</option>
+                                <option value="25">25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>&nbsp;</label></div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><button class="btn btn-danger"
+                            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop-2">Urgence</button>
+                        &nbsp;<button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop-1">Ajouter</button><label
+                            class="form-label">&nbsp;&nbsp;&nbsp;</label>
+                        <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div id="modaldialog-1" class="modal-dialog modal-lg">
+                                <div id="modalcontent-1" class="modal-content ">
+                                    <div id="modalheader-1" class="modal-header ">
+                                        <h3 id="staticBackdropLabel-1" class="modal-title">Ajouter une Admission</h3>
+                                        <button class="btn btn-primary btn-close" type="button"
+                                            data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div id="modalbody-1" class="modal-body">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Patient</button>
+                                                                    <div id="admissionpatient" class="dropdown-menu"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissionpatient()"
+                                                                            id="admissionpatientinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                    <div class="table-responsive table mt-2"
+                                                                        id="dataTable-1" role="grid"
+                                                                        aria-describedby="dataTable_info">
+                                                                        <table class="table my-0"
+                                                                            id="admissionpatienttable">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Nom</th>
+                                                                                    <th>Prenom</th>
+                                                                                    <th>CIN</th>
+                                                                                    <th>No.Patient</th>
+                                                                                    <th>Date de naissance</th>
+                                                                                    <th>Actions</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                            <tfoot>
+                                                                                <tr></tr>
+                                                                            </tfoot>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Médecin</button>
+                                                                    <div class="dropdown-menu" id="admissionmedcin"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissionmedcin()"
+                                                                            id="admissionmedcininput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-2" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0" id="admissionmedcintable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Nom</th>
+                                                                                <th>Prenom</th>
+                                                                                <th>No.Personnel</th>
+                                                                                <th>Specialité</th>
+                                                                                <th>Actions</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Infermier</button>
+                                                                    <div class="dropdown-menu" id="admissioninfermie"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissioninfermie()"
+                                                                            id="admissioninfermieinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-4" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0"
+                                                                        id="admissioninfermietable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Nom</th>
+                                                                                <th>Prenom</th>
+                                                                                <th>No.Presonnel</th>
+                                                                                <th>Specialité</th>
+                                                                                <th>Actions</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Salle</button>
+                                                                    <div class="dropdown-menu" style="width:100%;"
+                                                                        id="admissionsalle"><input
+                                                                            onkeyup="fadmissionsalle()"
+                                                                            id="admissionsalleinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-5" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0" id="admissionsalletable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Categorie</th>
+                                                                                <th>Numéro</th>
+                                                                                <th>Nbr de Lit</th>
+                                                                                <th>Actions</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="city"><strong>Motif
+                                                                        :</strong>
+                                                                </label>
+                                                                <input class="form-control" type="text" id="motif"
+                                                                    placeholder="Motif" name="motif" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="modal-footer-1" class="modal-footer"><button
+                                            class="btn btn-primary btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Fermer</button><button class="btn btn-primary"
+                                            type="button">Enregistrer</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var l2 = 0;
+                            var l3 = 0;
+                            var l4 = 0;
+
+
+                            var admissionpatienttable = document.getElementById('admissionpatienttable').getElementsByTagName('tbody')[0];
+                            var admissionpatient = document.getElementById('admissionpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionpatient.length; i++) {
+                                admissionpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = admissionpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+                            var admissionmedcintable = document.getElementById('admissionmedcintable').getElementsByTagName('tbody')[0];
+                            var admissionmedcin = document.getElementById('admissionmedcin').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionmedcin.length; i++) {
+                                admissionmedcin[i].onclick = function () {
+                                    if (l2 < 1) {
+                                        var newRow = admissionmedcintable.insertRow();
+                                        l2++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionmedcintable.deleteRow(-1);
+                                            l2--;
+                                        }
+                                    }
+                                };
+                            };
+
+                            var admissioninfermietable = document.getElementById('admissioninfermietable').getElementsByTagName('tbody')[0];
+                            var admissioninfermie = document.getElementById('admissioninfermie').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissioninfermie.length; i++) {
+                                admissioninfermie[i].onclick = function () {
+                                    if (l3 < 1) {
+                                        var newRow = admissioninfermietable.insertRow();
+                                        l3++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissioninfermietable.deleteRow(-1);
+                                            l3--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+
+
+                            var admissionsalletable = document.getElementById('admissionsalletable').getElementsByTagName('tbody')[0];
+                            var admissionsalle = document.getElementById('admissionsalle').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionsalle.length; i++) {
+                                admissionsalle[i].onclick = function () {
+                                    if (l4 < 1) {
+                                        var newRow = admissionsalletable.insertRow();
+                                        l4++;
+                                        for (var i = 0; i < 3; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionsalletable.deleteRow(-1);
+                                            l4--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+
+
+                            function fadmissionsalle() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionsalleinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionsalle");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+
+                            function fadmissionpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                            function fadmissionmedcin() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionmedcininput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionmedcin");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                            function fadmissioninfermie() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissioninfermieinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissioninfermie");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                        <div id="staticBackdrop-2" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div id="modaldialog-1" class="modal-dialog modal-lg">
+                                <div id="modalcontent-1" class="modal-content ">
+                                    <div id="modalheader-1" class="modal-header ">
+                                        <h3 id="staticBackdropLabel-1" class="modal-title">Ajouter une Admission -
+                                            Urgence</h3><button class="btn btn-primary btn-close" type="button"
+                                            data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div id="modalbody-1" class="modal-body">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Patient</button>
+                                                                    <div id="admissionpatient" class="dropdown-menu"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissionpatient()"
+                                                                            id="admissionpatientinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                    <div class="table-responsive table mt-2"
+                                                                        id="dataTable-1" role="grid"
+                                                                        aria-describedby="dataTable_info">
+                                                                        <table class="table my-0"
+                                                                            id="admissionpatienttable">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Nom</th>
+                                                                                    <th>Prenom</th>
+                                                                                    <th>CIN</th>
+                                                                                    <th>No.Patient</th>
+                                                                                    <th>Date de naissance</th>
+                                                                                    <th>Actions</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody></tbody>
+                                                                            <tfoot>
+                                                                                <tr></tr>
+                                                                            </tfoot>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Médecin</button>
+                                                                    <div class="dropdown-menu" id="admissionmedcin"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissionmedcin()"
+                                                                            id="admissionmedcininput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-2" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0" id="admissionmedcintable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Nom</th>
+                                                                                <th>Prenom</th>
+                                                                                <th>No.Personnel</th>
+                                                                                <th>Specialité</th>
+                                                                                <th>Actions</th>
+
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Infermier</button>
+                                                                    <div class="dropdown-menu" id="admissioninfermie"
+                                                                        style="width:100%;"><input
+                                                                            onkeyup="fadmissioninfermie()"
+                                                                            id="admissioninfermieinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-4" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0"
+                                                                        id="admissioninfermietable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Nom</th>
+                                                                                <th>Prenom</th>
+                                                                                <th>No.Presonnel</th>
+                                                                                <th>Specialité</th>
+                                                                                <th>Actions</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <hr />
+                                                                <div class="dropdown d-grid gap-2"><button
+                                                                        class="btn btn-light dropdown-toggle"
+                                                                        type="button"
+                                                                        data-bs-toggle="dropdown">Salle</button>
+                                                                    <div class="dropdown-menu" style="width:100%;"
+                                                                        id="admissionsalle"><input
+                                                                            onkeyup="fadmissionsalle()"
+                                                                            id="admissionsalleinput" type="text"
+                                                                            class="form-control form-control dropdown-search-input"
+                                                                            placeholder="Search.." /><a
+                                                                            class="dropdown-item" href="#">Angular</a><a
+                                                                            class="dropdown-item" href="#">Java</a><a
+                                                                            class="dropdown-item"
+                                                                            href="#">JavaScript</a></div>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2"
+                                                                    id="dataTable-5" role="grid"
+                                                                    aria-describedby="dataTable_info">
+                                                                    <table class="table my-0" id="admissionsalletable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Categorie</th>
+                                                                                <th>Numéro</th>
+                                                                                <th>Nbr de Lit</th>
+                                                                                <th>Actions</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="city"><strong>Motif
+                                                                        :</strong>
+                                                                </label>
+                                                                <input class="form-control" type="text" id="motif"
+                                                                    placeholder="Motif" name="motif" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label"
+                                                                    for="city"><strong>Médecin accompagnant
+                                                                        :</strong></label><input class="form-control"
+                                                                    type="text" placeholder="Nom et Prénom" /></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label"
+                                                                    for="country"><strong>Tél
+                                                                        :</strong><br /></label><input type="text"
+                                                                    class="form-control" id="medecinTel"
+                                                                    placeholder="Tél" name="medecinTel" /></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row" style="text-align: left;">
+                                                        <div class="col">
+                                                            <div class="mb-3">
+                                                                <label class="form-label"
+                                                                    for="city"><strong>Etablissement Précedent
+                                                                        :</strong>
+                                                                </label>
+                                                                <input class="form-control" type="text"
+                                                                    id="etablissement precedent"
+                                                                    placeholder="Etablissement" name="etablissement" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="modal-footer-1" class="modal-footer"><button
+                                            class="btn btn-primary btn btn-secondary" type="button"
+                                            data-bs-dismiss="modal">Fermer</button><button class="btn btn-primary"
+                                            type="button">Enregistrer</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var l2 = 0;
+                            var l3 = 0;
+                            var l4 = 0;
+
+
+                            var admissionpatienttable = document.getElementById('admissionpatienttable').getElementsByTagName('tbody')[0];
+                            var admissionpatient = document.getElementById('admissionpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionpatient.length; i++) {
+                                admissionpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = admissionpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+                            var admissionmedcintable = document.getElementById('admissionmedcintable').getElementsByTagName('tbody')[0];
+                            var admissionmedcin = document.getElementById('admissionmedcin').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionmedcin.length; i++) {
+                                admissionmedcin[i].onclick = function () {
+                                    if (l2 < 1) {
+                                        var newRow = admissionmedcintable.insertRow();
+                                        l2++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionmedcintable.deleteRow(-1);
+                                            l2--;
+                                        }
+                                    }
+                                };
+                            };
+
+                            var admissioninfermietable = document.getElementById('admissioninfermietable').getElementsByTagName('tbody')[0];
+                            var admissioninfermie = document.getElementById('admissioninfermie').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissioninfermie.length; i++) {
+                                admissioninfermie[i].onclick = function () {
+                                    if (l3 < 1) {
+                                        var newRow = admissioninfermietable.insertRow();
+                                        l3++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissioninfermietable.deleteRow(-1);
+                                            l3--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+
+
+                            var admissionsalletable = document.getElementById('admissionsalletable').getElementsByTagName('tbody')[0];
+                            var admissionsalle = document.getElementById('admissionsalle').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < admissionsalle.length; i++) {
+                                admissionsalle[i].onclick = function () {
+                                    if (l4 < 1) {
+                                        var newRow = admissionsalletable.insertRow();
+                                        l4++;
+                                        for (var i = 0; i < 3; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            admissionsalletable.deleteRow(-1);
+                                            l4--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+
+
+                            function fadmissionsalle() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionsalleinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionsalle");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+
+                            function fadmissionpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                            function fadmissionmedcin() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissionmedcininput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissionmedcin");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                            function fadmissioninfermie() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("admissioninfermieinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("admissioninfermie");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable"
+                                placeholder="Search"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Medecin</th>
+                            <th>Salle</th>
+                            <th>Infermier</th>
+                            <th>Date d'admission</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img class="rounded-circle me-2" width="30" height="30"
+                                    src="assets/img/avatars/avatar1.jpeg">Airi Satou</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>33</td>
+                            <td>2008/11/28</td>
+                        </tr>
+                        <tr>
+                            <td><img class="rounded-circle me-2" width="30" height="30"
+                                    src="assets/img/avatars/avatar5.jpeg">Cedric Kelly</td>
+                            <td>Senior JavaScript Developer</td>
+                            <td>Edinburgh</td>
+                            <td>22</td>
+                            <td>2012/03/29<br></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-md-6 align-self-center"></div>
+                <div class="col-md-6">
+                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                        <ul class="pagination">
+                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span
+                                        aria-hidden="true">«</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                                        aria-hidden="true">»</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

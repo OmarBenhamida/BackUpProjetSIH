@@ -1,0 +1,267 @@
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Ajouter une consultation</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Patient</button>
+                                <div class="dropdown-menu" id="consultationpatient" style="width:100%;"><input
+                                        onkeyup="fconsultationpatient()" id="consultationpatientinput" type="text"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                                <div class="table-responsive table mt-2" id="consultationpatienttable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>CIN</th>
+                                                <th>No.Patient</th>
+                                                <th>Date de naissance</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var consultationpatienttable = document.getElementById('consultationpatienttable').getElementsByTagName('tbody')[0];
+                            var consultationpatient = document.getElementById('consultationpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < consultationpatient.length; i++) {
+                                consultationpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = consultationpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            consultationpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function fconsultationpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("consultationpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("consultationpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Médecin</button>
+                                <div class="dropdown-menu" id="consultationmedcin" style="width:100%;"><input
+                                        onkeyup="fconsultationmedcin()" id="consultationmedcininput"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                                <div class="table-responsive table mt-2" id="consultationmedcintable" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="dataTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>No.Personnel</th>
+                                                <th>Specialité</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+
+                            var consultationmedcintable = document.getElementById('consultationmedcintable').getElementsByTagName('tbody')[0];
+                            var consultationmedcin = document.getElementById('consultationmedcin').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < consultationmedcin.length; i++) {
+                                consultationmedcin[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = consultationmedcintable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            consultationmedcintable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+
+                            function fconsultationmedcin() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("consultationmedcininput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("consultationmedcin");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Salle </button>
+                                <div class="dropdown-menu" style="width: 100%;" id="consultationsalle"><input
+                                        onkeyup="fconsultationsalle()" id="consultationsalleinput"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="consultationsalletable" role="grid"
+                            aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                    <tr>
+                                        <th>Categorie</th>
+                                        <th>Numéro</th>
+                                        <th>Nbr de Lit</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                                <tfoot>
+                                    <tr></tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <script>
+                        var l = 0;
+                        var consultationsalletable = document.getElementById('consultationsalletable').getElementsByTagName('tbody')[0];
+                        var consultationsalle = document.getElementById('consultationsalle').getElementsByClassName("dropdown-item");
+                        for (var i = 0; i < consultationsalle.length; i++) {
+
+                            consultationsalle[i].onclick = function () {
+                                if (l < 1) {
+                                    var newRow = consultationsalletable.insertRow();
+                                    l++;
+                                    for (var i = 0; i < 3; i++) {
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode(this.textContent);
+                                        newCell.appendChild(newText);
+                                    }
+                                    var newCell = newRow.insertCell();
+                                    var newText = document.createTextNode("Supprimer");
+                                    newCell.appendChild(newText);
+                                    newCell.onclick = function () {
+                                        consultationsalletable.deleteRow(-1);
+                                        l--;
+                                    }
+                                }
+                            };
+                        }
+
+
+
+
+                        function fconsultationsalle() {
+                            var input, filter, ul, li, a, i;
+                            input = document.getElementById("consultationsalleinput");
+                            filter = input.value.toUpperCase();
+                            div = document.getElementById("consultationsalle");
+                            a = div.getElementsByTagName("a");
+                            for (i = 0; i < a.length; i++) {
+                                txtValue = a[i].textContent || a[i].innerText;
+                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                    a[i].style.display = "";
+                                } else {
+                                    a[i].style.display = "none";
+                                }
+                            }
+                        }
+                    </script>
+                </div>
+                <hr>
+                <div class="mb-3"><label class="form-label" for="address"><br></label><input class="form-control"
+                        type="text" id="address" placeholder="Motife" name="address"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Date :</strong></label><input
+                                class="form-control" type="date"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="country"><strong>Heure
+                                    :</strong><br></label><input class="form-control" type="text" id="country"
+                                placeholder="00H" name="country"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Prix :</strong></label><input
+                                class="form-control" type="number" placeholder="Prix" /></div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+                <hr>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>

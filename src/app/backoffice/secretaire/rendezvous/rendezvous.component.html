@@ -1,0 +1,251 @@
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Planifier un Rendez-Vous</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Patient</button>
+                                <div class="dropdown-menu" style="width:100%;" id="rendezvouspatient"><input type="text"
+                                        id="rendezvouspatientinput" onkeyup="frendezvouspatient()"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="rendezvouspatienttable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>CIN</th>
+                                            <th>No.Patient</th>
+                                            <th>Date de naissance</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+
+                            var l = 0;
+                            var rendezvouspatienttable = document.getElementById('rendezvouspatienttable').getElementsByTagName('tbody')[0];
+                            var rendezvouspatient = document.getElementById('rendezvouspatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < rendezvouspatient.length; i++) {
+                                if (l < 1) {
+                                    rendezvouspatient[i].onclick = function () {
+                                        var newRow = rendezvouspatienttable.insertRow();
+                                        l++;
+
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            rendezvouspatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function frendezvouspatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("rendezvouspatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("rendezvouspatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown"> Service </button>
+                                <div class="dropdown-menu" id="rendezvousservice" style="width:100%;"><input
+                                        id="rendezvousserviceinput" type="text" onkeyup="frendezvousservice()"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="rendezvousservicetable">
+                                    <thead>
+                                        <tr>
+                                            <th>intitulé</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var rendezvousservicetable = document.getElementById('rendezvousservicetable').getElementsByTagName('tbody')[0];
+                            var rendezvousservice = document.getElementById('rendezvousservice').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < rendezvousservice.length; i++) {
+                                rendezvousservice[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = rendezvousservicetable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 1; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            rendezvousservicetable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function frendezvousservice() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("rendezvousserviceinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("rendezvousservice");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Personnel </button>
+                                <div class="dropdown-menu" id="rendezvouspersonnel" style="width:100%;"><input
+                                        id="rendezvouspersonnelinput" onkeyup="frendezvouspersonnel()" type="text"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="rendezvouspersonneltable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>No.Personnel</th>
+                                            <th>Specialité</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var rendezvouspersonneltable = document.getElementById('rendezvouspersonneltable').getElementsByTagName('tbody')[0];
+                            var rendezvouspersonnel = document.getElementById('rendezvouspersonnel').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < rendezvouspersonnel.length; i++) {
+                                rendezvouspersonnel[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = rendezvouspersonneltable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            rendezvouspersonneltable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function frendezvouspersonnel() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("rendezvouspersonnelinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("rendezvouspersonnel");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Date :</strong></label><input
+                                class="form-control" type="date"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="country"><strong>Heure
+                                    :</strong><br></label><input class="form-control" type="text" id="country"
+                                placeholder="00H" name="country"></div>
+                    </div>
+                </div>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>
