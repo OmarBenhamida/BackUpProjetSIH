@@ -1,1 +1,240 @@
-<p>prescription works!</p>
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Rédiger une prescription</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Patient</button>
+                                <div id="perscriptionpatient" class="dropdown-menu" style="width:100%;"><input
+                                        onkeyup="fperscriptionpatient()" id="perscriptionpatientinput" type="text"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                                <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="perscriptionpatienttable">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>CIN</th>
+                                                <th>No.Patient</th>
+                                                <th>Date de naissance</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var perscriptionpatienttable = document.getElementById('perscriptionpatienttable').getElementsByTagName('tbody')[0];
+                            var perscriptionpatient = document.getElementById('perscriptionpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < perscriptionpatient.length; i++) {
+                                perscriptionpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = perscriptionpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            perscriptionpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function fperscriptionpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("perscriptionpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("perscriptionpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="dropdown d-grid gap-2"><button id="btnmed"
+                                        class="btn btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown">Médicament</button>
+                                    <div id="prescriptionmedicaments" class="dropdown-menu" style="width: 100%;"><input
+                                            id="prescriptionmedicamentsinput" type="text"
+                                            class="form-control form-control dropdown-search-input"
+                                            onkeyup="fprescriptionmedicaments()" placeholder="Search.." /><a
+                                            class="dropdown-item" href="#">Angular</a><a class="dropdown-item"
+                                            href="#">Java</a><a class="dropdown-item" href="#">JavaScript</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive table mt-2" id="perscriptionmedicamentstable" role="grid">
+                        <table class="table my-0" id="dataTablemed">
+                            <thead>
+                                <tr>
+                                    <th>Medicament</th>
+                                    <th>Reference</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <script>
+                    var perscriptionmedicamentstable = document.getElementById('perscriptionmedicamentstable').getElementsByTagName('tbody')[0];
+                    var perscriptionmedicaments = document.getElementById('prescriptionmedicaments').getElementsByClassName("dropdown-item");
+                    for (var i = 0; i < perscriptionmedicaments.length; i++) {
+                        perscriptionmedicaments[i].onclick = function () {
+                            var newRow = perscriptionmedicamentstable.insertRow();
+                            for (var i = 0; i < 2; i++) {
+                                var newCell = newRow.insertCell();
+                                var newText = document.createTextNode(this.textContent);
+                                newCell.appendChild(newText);
+                            }
+                            var newCell = newRow.insertCell();
+                            var newText = document.createTextNode("Supprimer");
+                            newCell.appendChild(newText);
+                            newCell.onclick = function () {
+                                perscriptionmedicamentstable.deleteRow(-1);
+                                l--;
+                            }
+                        };
+                    }
+
+
+
+
+
+
+                    function fprescriptionmedicaments() {
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById("prescriptionmedicamentsinput");
+                        filter = input.value.toUpperCase();
+                        div = document.getElementById("prescriptionmedicaments");
+                        a = div.getElementsByTagName("a");
+                        for (i = 0; i < a.length; i++) {
+                            txtValue = a[i].textContent || a[i].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                a[i].style.display = "";
+                            } else {
+                                a[i].style.display = "none";
+                            }
+                        }
+                    }
+                </script>
+                <div class="row">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <div class="dropdown d-grid gap-2"><button id="btnmed"
+                                        class="btn btn-light dropdown-toggle" type="button"
+                                        data-bs-toggle="dropdown">Analyses</button>
+                                    <div id="prescriptionanalyses" class="dropdown-menu" style="width: 100%;"><input
+                                            id="prescriptionanalysesinput" type="text"
+                                            class="form-control form-control dropdown-search-input"
+                                            onkeyup="fprescriptionanalyses()" placeholder="Search.." /><a
+                                            class="dropdown-item" href="#">Angular</a><a class="dropdown-item"
+                                            href="#">Java</a><a class="dropdown-item" href="#">JavaScript</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive table mt-2" id="perscriptionanalysestable" role="grid">
+                        <table class="table my-0" id="dataTablemed">
+                            <thead>
+                                <tr>
+                                    <th>Analyses</th>
+                                    <th>Reference</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                                <tr></tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <script>
+                    var perscriptionmedicamentstable = document.getElementById('perscriptionanalysestable').getElementsByTagName('tbody')[0];
+                    var perscriptionmedicaments = document.getElementById('prescriptionanalyses').getElementsByClassName("dropdown-item");
+                    for (var i = 0; i < perscriptionmedicaments.length; i++) {
+                        perscriptionmedicaments[i].onclick = function () {
+                            var newRow = perscriptionmedicamentstable.insertRow();
+                            for (var i = 0; i < 2; i++) {
+                                var newCell = newRow.insertCell();
+                                var newText = document.createTextNode(this.textContent);
+                                newCell.appendChild(newText);
+                            }
+                            var newCell = newRow.insertCell();
+                            var newText = document.createTextNode("Supprimer");
+                            newCell.appendChild(newText);
+                            newCell.onclick = function () {
+                                perscriptionmedicamentstable.deleteRow(-1);
+                                l--;
+                            }
+                        };
+                    }
+
+
+
+
+
+
+                    function fprescriptionanalyses() {
+                        var input, filter, ul, li, a, i;
+                        input = document.getElementById("prescriptionanalysesinput");
+                        filter = input.value.toUpperCase();
+                        div = document.getElementById("prescriptionanalyses");
+                        a = div.getElementsByTagName("a");
+                        for (i = 0; i < a.length; i++) {
+                            txtValue = a[i].textContent || a[i].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                a[i].style.display = "";
+                            } else {
+                                a[i].style.display = "none";
+                            }
+                        }
+                    }
+                </script>
+                <hr>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>

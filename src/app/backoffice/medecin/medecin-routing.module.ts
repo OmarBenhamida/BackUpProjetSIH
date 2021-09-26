@@ -9,6 +9,7 @@ import { GardeComponent } from './garde/garde.component';
 import { AutorisationComponent } from './autorisation/autorisation.component';
 import { DossiermedicalComponent } from './dossiermedical/dossiermedical.component';
 import { AgendaComponent } from './agenda/agenda.component';
+import { DetailsPatientComponent } from './details-patient/details-patient.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
@@ -23,7 +24,7 @@ const routes: Routes = [
       { path: 'garde', component: GardeComponent },
       { path: 'prescription', component: PrescriptionComponent },
       { path: 'medecin', component: MedecinComponent },
-
+      { path: 'detailsPateint', component: DetailsPatientComponent}
 
     ],
   },

@@ -9,10 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
 @NgModule({
   declarations: [
 
-    BackofficeComponent
+    BackofficeComponent,
+
   ],
   imports: [
     HttpClientModule,

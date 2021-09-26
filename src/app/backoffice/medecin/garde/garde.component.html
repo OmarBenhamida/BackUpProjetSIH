@@ -1,1 +1,197 @@
-<p>garde works!</p>
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Gestion des Gardes</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Médecin</button>
+                                <div class="dropdown-menu" id="gardesmedcin" style="width:100%;"><input
+                                        class="form-control form-control dropdown-search-input"
+                                        onkeyup="fgardesmedcin()" id="gardesmedcininput" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="gardesmedcintable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>No.Personnel</th>
+                                            <th>Specialité</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var gardesmedcintable = document.getElementById('gardesmedcintable').getElementsByTagName('tbody')[0];
+                            var gardesmedcin = document.getElementById('gardesmedcin').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < gardesmedcin.length; i++) {
+                                gardesmedcin[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = gardesmedcintable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            gardesmedcintable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            };
+
+
+
+
+                            function fgardesmedcin() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("gardesmedcininput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("gardesmedcin");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Infermier</button>
+                                <div class="dropdown-menu" id="gardesinfermie" style="width:100%;"><input
+                                        onkeyup="fgardesinfermie()" id="gardesinfermieinput"
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="gardesinfermietable">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>No.Personnel</th>
+                                            <th>Specialité</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <script>
+
+
+                            var l = 0;
+                            var gardesinfermietable = document.getElementById('gardesinfermietable').getElementsByTagName('tbody')[0];
+                            var gardesinfermie = document.getElementById('gardesinfermie').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < gardesinfermie.length; i++) {
+                                gardesinfermie[i].onclick = function () {
+                                    if (l < 2) {
+                                        var newRow = gardesinfermietable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 4; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            gardesinfermietable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+
+
+                            function fgardesinfermie() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("gardesinfermieinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("gardesinfermie");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <hr>
+                <div class="mb-3"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Date :</strong></label><input
+                                class="form-control" type="date"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="country"><strong>Heure
+                                    :</strong><br></label><input class="form-control" type="text" id="country"
+                                placeholder="00H" name="country"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2">
+                                <div class="dropdown-menu" style="width:100%;"><input
+                                        class="form-control form-control dropdown-search-input" type="text"
+                                        placeholder="Search.."><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>

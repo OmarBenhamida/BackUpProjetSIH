@@ -7,6 +7,7 @@ import { GardeComponent } from './garde/garde.component';
 import { MedecinComponent } from './medecin.component';
 import { MedecinRoutingModule } from './medecin-routing.module';
 import { PrescriptionComponent } from './prescription/prescription.component';
+import { DetailsPatientComponent } from './details-patient/details-patient.component';
 
 
 
@@ -17,7 +18,8 @@ import { PrescriptionComponent } from './prescription/prescription.component';
     PrescriptionComponent,
     AutorisationComponent,
     GardeComponent,
-    MedecinComponent
+    MedecinComponent,
+    DetailsPatientComponent
   ],
   imports: [
     CommonModule,

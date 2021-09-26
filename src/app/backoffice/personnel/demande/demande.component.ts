@@ -5,7 +5,7 @@ import * as $ from 'jquery';
   selector: 'app-demande',
   templateUrl: './demande.component.html',
   styleUrls: ['./demande.component.css']
-})
+  })
 export class DemandeComponent implements OnInit {
 
   callfun(){

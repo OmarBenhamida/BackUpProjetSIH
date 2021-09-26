@@ -1,0 +1,247 @@
+<div class="container">
+    <div id="multple-step-form-n" class="container overflow-hidden" style="margin-top: 0px;margin-bottom: 10px;padding-bottom: 300px;padding-top: 57px;">
+      <div id="progress-bar-button" class="multisteps-form">
+          <div class="row">
+              <div class="col-12 col-lg-12 ml-auto mr-auto mb-4">
+                  <div class="multisteps-form__progress"><a class="btn multisteps-form__progress-btn js-active" role="button" title="User Info">Informations Personnelles</a>
+                    <a class="btn multisteps-form__progress-btn" role="button" title="User Info">Post</a><a class="btn multisteps-form__progress-btn" role="button" title="User Info">Date</a></div>
+              </div>
+          </div>
+      </div>
+      <div id="multistep-start-row" class="row">
+          <div id="multistep-start-column" class="col-12 col-lg m-auto">
+              <form id="main-form" class="multisteps-form__form">
+                  <div id="single-form-next" class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
+                      <h3 class="text-center multisteps-form__title">Informations Personnelles</h3>
+                      <div id="form-content" class="multisteps-form__content">
+                        <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">Personnel</button>
+                          <div class="dropdown-menu" id="consultationpatient" style="width:100%;"><input type="text" class="form-control form-control dropdown-search-input" placeholder="Search.." />
+                              <a class="dropdown-item" href="#">Angular</a>
+                              <a class="dropdown-item" href="#">Java</a>
+                              <a class="dropdown-item" href="#">JavaScript</a>
+                          </div>
+                          <div class="table-responsive table mt-2" id="consultationpatienttable" role="grid" aria-describedby="dataTable_info">
+                              <table class="table my-0" id="dataTable">
+                                  <thead>
+                                      <tr>
+                                          <th>Nom</th>
+                                          <th>Prenom</th>
+                                          <th>Cin</th>
+                                          
+                                      </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                                  <tfoot>
+                                      <tr></tr>
+                                  </tfoot>
+                              </table>
+                          </div>
+                      </div>
+                          
+                    
+                          <div id="next-button" class="button-row d-flex mt-4"><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
+                      </div>
+                  </div>
+                  <div id="single-form-next-prev" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                      <h3 class="text-center multisteps-form__title">Post</h3>
+                      <div id="form-content-1" class="multisteps-form__content">
+                        
+                        <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">Post</button>
+                            <div class="dropdown-menu" id="consultationpatient" style="width:100%;"><input type="text" class="form-control form-control dropdown-search-input" placeholder="Search.." />
+                                <a class="dropdown-item" href="#">Medecin</a>
+                                <a class="dropdown-item" href="#">Infermier</a>
+                                <a class="dropdown-item" href="#">Major</a>
+                            </div>
+                            <div class="table-responsive table mt-2" id="consultationpatienttable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Intitule</th>
+                                            <th>Salaire Horaire</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                    <tfoot>
+                                        <tr></tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    
+  
+  
+                          <div id="next-prev-buttons" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><label class="form-label"> </label><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Next">Next</button></div>
+                      </div>
+                  </div>
+                  <div id="single-form-next-prev-1" class="multisteps-form__panel shadow p-4 rounded bg-white" data-animation="scaleIn">
+                      <h3 class="text-center multisteps-form__title">Date</h3>
+                      <div id="form-content-2" class="multisteps-form__content">
+                        
+                        <div id="input-grp-single" class="form-row mt-4">
+                            <div class="col-12"><label class="form-label">Date de début</label><input class="form-control" type="date" /></div>
+                        </div>
+
+                        <div id="input-grp-single" class="form-row mt-4">
+                          <div class="col-12"><label class="form-label">Date de fin</label><input class="form-control" type="date" /></div>
+                      </div>
+                 
+  
+                          <div id="next-prev-buttons-1" class="button-row d-flex mt-4"><button class="btn btn btn-primary js-btn-prev" type="button" title="Prev">Prev</button><label class="form-label"> </label><button class="btn btn btn-primary ml-auto js-btn-next" type="button" title="Ajouter">Ajouter</button></div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div><br />
+      <div class="card shadow">
+          <div class="card-header py-3">
+              <p class="text-primary m-0 fw-bold">Liste des Affectation</p>
+          </div>
+          <div class="card-body">
+              <div class="row">
+                  <div class="col-md-6 text-nowrap">
+                      <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show <select class="d-inline-block form-select form-select-sm">
+                                  <option value="10" selected>10</option>
+                                  <option value="25">25</option>
+                                  <option value="50">50</option>
+                                  <option value="100">100</option>
+                              </select> </label></div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label></div>
+                  </div>
+              </div>
+              <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                  <thead>
+                      <tr>
+                          <th>Nom et prenom</th>
+                          <th>Post</th>
+                          <th>date début</th>
+                          <th>date fin</th>
+                          <th>Période</th>
+                        
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>Fathi Youssef</td>
+                          <td>Medeci</td>
+                          <td>12-07-2012</td>
+                          <td>20-07-2012</td>
+                          <td>3 ans</td>
+                      
+                          <td>
+                        <button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
+                              <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                  <div id="modaldialog-1" class="modal-dialog">
+                                      <div id="modalcontent-1" class="modal-content">
+                                          <div id="modalheader-1" class="modal-header">
+                                              <h1 id="staticBackdropLabel-1" class="modal-title">Modifier une affectation</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                          </div>
+                                          <div id="modalbody-1" class="modal-body">
+                                              <div class="card shadow">
+                                                  <div class="card-body">
+                                                      <form>
+                                                          <div class="mb-3">
+                                                              <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">Personnel</button>
+                                                                  <div class="dropdown-menu" id="consultationpatient" style="width:100%;"><input type="text" class="form-control form-control dropdown-search-input" placeholder="Search.." />
+                                                                      <a class="dropdown-item" href="#">Angular</a>
+                                                                      <a class="dropdown-item" href="#">Java</a>
+                                                                      <a class="dropdown-item" href="#">JavaScript</a>
+                                                                  </div>
+                                                                  <div class="table-responsive table mt-2" id="consultationpatienttable" role="grid" aria-describedby="dataTable_info">
+                                                                      <table class="table my-0" id="dataTable">
+                                                                          <thead>
+                                                                              <tr>
+                                                                                  <th>Nom</th>
+                                                                                  <th>Prenom</th>
+                                                                                  <th>Cin</th>
+                                                                                  
+                                                                              </tr>
+                                                                          </thead>
+                                                                          <tbody></tbody>
+                                                                          <tfoot>
+                                                                              <tr></tr>
+                                                                          </tfoot>
+                                                                      </table>
+                                                                  </div>
+                                                              </div>
+
+                                                              <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">Post</button>
+                                                                <div class="dropdown-menu" id="consultationpatient" style="width:100%;"><input type="text" class="form-control form-control dropdown-search-input" placeholder="Search.." />
+                                                                    <a class="dropdown-item" href="#">Medecin</a>
+                                                                    <a class="dropdown-item" href="#">Infermier</a>
+                                                                    <a class="dropdown-item" href="#">Major</a>
+                                                                </div>
+                                                                <div class="table-responsive table mt-2" id="consultationpatienttable" role="grid" aria-describedby="dataTable_info">
+                                                                    <table class="table my-0" id="dataTable">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Id</th>
+                                                                                <th>Intitule</th>
+                                                                                <th>Salaire Horaire</th>
+                                                                                
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody></tbody>
+                                                                        <tfoot>
+                                                                            <tr></tr>
+                                                                        </tfoot>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+
+                                                          
+                                                          <div class="row">
+                                                              <div class="col">
+                                                                  <div class="col-12"><label class="form-label">Date de début</label><input class="form-control" type="date" /></div>
+                                                              </div>
+                                                              <div class="col">
+                                                                  <div class="col-12"><label class="form-label">Date de fin</label><input class="form-control" type="date" /></div>
+                                                              </div>
+                                                          </div>
+                                             
+                                                      
+                                                  
+      
+                                                      </form>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div id="modal-footer-1" class="modal-footer"><button class="btn btn-primary btn btn-secondary" type="button" data-bs-dismiss="modal">Fermer</button><button class="btn btn-primary" type="button">Enregistrer</button></div>
+                                      </div>
+                                  </div>
+                              </div>
+                           
+      
+                          </td>
+                      </tr>
+               
+                  </tbody>
+                  <tfoot>
+                      <tr></tr>
+                  </tfoot>
+              </table>
+              </div>
+              <div class="row">
+                  <div class="col-md-6 align-self-center"></div>
+                  <div class="col-md-6">
+                      <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                          <ul class="pagination">
+                              <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                              <li class="page-item"><a class="page-link" href="#">2</a></li>
+                              <li class="page-item"><a class="page-link" href="#">3</a></li>
+                              <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-fichederenseignement',
   templateUrl: './fichederenseignement.component.html',
   styleUrls: ['./fichederenseignement.component.css']
-})
+  })
 export class FichederenseignementComponent implements OnInit {
 
   constructor() { }

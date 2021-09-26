@@ -1,1 +1,100 @@
-<p>autorisation works!</p>
+<div class="container-fluid">
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">Autorisation pour quitter la clinique</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <div class="dropdown d-grid gap-2"><button class="btn btn-light dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown">Patient</button>
+                                <div id="autorisationpatient" class="dropdown-menu" style="width:100%;"><input
+                                        onkeyup="fautorisationpatient()" id="autorisationpatientinput" type="text"
+                                        class="form-control form-control dropdown-search-input"
+                                        placeholder="Search.." /><a class="dropdown-item" href="#">Angular</a><a
+                                        class="dropdown-item" href="#">Java</a><a class="dropdown-item"
+                                        href="#">JavaScript</a></div>
+                                <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                    aria-describedby="dataTable_info">
+                                    <table class="table my-0" id="autorisationpatienttable">
+                                        <thead>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Prenom</th>
+                                                <th>CIN</th>
+                                                <th>No.Patient</th>
+                                                <th>Date de naissance</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <tfoot>
+                                            <tr></tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            var l = 0;
+                            var autorisationpatienttable = document.getElementById('autorisationpatienttable').getElementsByTagName('tbody')[0];
+                            var autorisationpatient = document.getElementById('autorisationpatient').getElementsByClassName("dropdown-item");
+                            for (var i = 0; i < autorisationpatient.length; i++) {
+                                autorisationpatient[i].onclick = function () {
+                                    if (l < 1) {
+                                        var newRow = autorisationpatienttable.insertRow();
+                                        l++;
+                                        for (var i = 0; i < 5; i++) {
+                                            var newCell = newRow.insertCell();
+                                            var newText = document.createTextNode(this.textContent);
+                                            newCell.appendChild(newText);
+                                        }
+                                        var newCell = newRow.insertCell();
+                                        var newText = document.createTextNode("Supprimer");
+                                        newCell.appendChild(newText);
+                                        newCell.onclick = function () {
+                                            autorisationpatienttable.deleteRow(-1);
+                                            l--;
+                                        }
+                                    }
+                                };
+                            }
+
+
+
+                            function fautorisationpatient() {
+                                var input, filter, ul, li, a, i;
+                                input = document.getElementById("autorisationpatientinput");
+                                filter = input.value.toUpperCase();
+                                div = document.getElementById("autorisationpatient");
+                                a = div.getElementsByTagName("a");
+                                for (i = 0; i < a.length; i++) {
+                                    txtValue = a[i].textContent || a[i].innerText;
+                                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                        a[i].style.display = "";
+                                    } else {
+                                        a[i].style.display = "none";
+                                    }
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="city"><strong>Date :</strong></label><input
+                                class="form-control" type="date"></div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3"><label class="form-label" for="country"><strong>Heure
+                                    :</strong><br></label><input class="form-control" type="text" id="country"
+                                placeholder="00H" name="country"></div>
+                    </div>
+                </div>
+                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Ajouter </button></div>
+            </form>
+        </div>
+    </div>
+</div>
