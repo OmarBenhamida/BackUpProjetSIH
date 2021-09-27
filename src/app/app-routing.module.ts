@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 import { FrontofficeComponent } from './frontoffice/frontoffice.component';
 
 const routes: Routes = [
- { path: '', redirectTo: 'backoffice', pathMatch: 'full'},
+ { path: '', redirectTo: 'authentification', pathMatch: 'full'},
  // { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule), },
  //{ path: '', redirectTo: 'frontoffice', pathMatch: 'full'},
   { path: 'backoffice', loadChildren: () => import('./backoffice/backoffice.module').then(m => m.BackofficeModule), },
  { path: 'frontoffice', loadChildren: () => import('./frontoffice/frontoffice.module').then(m => m.FrontofficeModule), },
 //{ path: 'authentification', loadChildren: () => import('./authentification/authentification.module').then(m => m.AuthentificationModule), },
- //{ path: '', redirectTo: 'Accueil', pathMatch: 'full' },
-//{ path: 'Accueil', component: FrontofficeComponent },
+{ path: 'authentification', component: AuthComponent },
 
 
  // tslint:disable-next-line:max-line-length
