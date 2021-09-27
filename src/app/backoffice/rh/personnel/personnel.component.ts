@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SuperserviceService } from 'src/app/Shared/Superservice.service';
 
 @Component({
   selector: 'app-personnel',
@@ -15,10 +17,52 @@ import { Component, OnInit } from '@angular/core';
   'assets/css/Table-With-Search.css']
 })
 export class PersonnelComponent implements OnInit {
+  data:any;
 
-  constructor() { }
+  constructor(private catService:SuperserviceService,private activatedRoute:ActivatedRoute,private router:Router) {
+    this.activatedRoute.queryParams.subscribe(data=> {
+        this.catService.getData("medecins")
+          .subscribe(data => {
+            this.data = data;
+          }, err => {
+            console.log(err);
+          })
+    })
+  }
 
   ngOnInit(): void {
+
+    var head = document.getElementsByTagName('body')[0];
+    var script = document.createElement('script');
+    var script2 = document.createElement('script');
+    var script3 = document.createElement('script');
+    var script4 = document.createElement('script');
+    var script5= document.createElement('script');
+    var script6= document.createElement('script');
+    var script7= document.createElement('script');
+
+    
+    // script.type = 'text/javascript';
+
+    script2.src='assets/bootstrap/js/bootstrap.min.j';
+    script3.src='assets/js/dropdown-search-bs4.js';
+    script4.src='assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js';
+    script5.src='assets/js/Multi-step-form.js';
+    script6.src='assets/js/Table-With-Search.js';
+    script7.src='assets/js/theme.js';
+
+    
+
+    script.src = 'assets/js/main.js';
+    head.appendChild(script);
+    head.appendChild(script2);
+    head.appendChild(script3);
+    head.appendChild(script4);
+    head.appendChild(script5);
+    head.appendChild(script6);
+    head.appendChild(script7);
+
+
   }
 
 }

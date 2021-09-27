@@ -1,0 +1,43 @@
+<div class="">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-5">
+                        <div class="row">
+                            <div class="col-4 ">
+                               <!--<img src="https://www.nmmedical.fr/blog/wp-content/uploads/medecin-stethoscope-dans-mains-hopital_1423-1.jpg">--> 
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">SEHATI-صحتي</h4>
+                                    </div>
+                                    <form #f="ngForm" (ngSubmit)="loginx(f.value.login,f.value.pass)">
+                                        <img class="mb-4" src="https://cdn4.iconfinder.com/data/icons/business-and-e-commerce/64/Employee_man-512.png" alt="" width="40%" height="40%" >
+                                        <h1 class="h3 mb-3 fw-normal">Authentification</h1>
+                                        <br><br>
+                                        <input type="email" id="inputEmail" class="form-control" name="login" placeholder="Adresse e-mail" required autofocus ngModel>
+                                        <br><br>
+                                        <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Mot de pass" required ngModel>
+                                        <p style="color:red" *ngIf="failed"> Email ou mot de passe incorrect </p>
+                                        <br><br>
+                                        <button class="w-100 btn btn-lg btn-primary" type="submit"  style="width: 250px">Connexion</button>
+                                      </form>
+                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
+                                    <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/dropdown-search-bs4.js"></script>
+    <script src="assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
+    <script src="assets/js/Multi-step-form.js"></script>
+    <script src="assets/js/Table-With-Search.js"></script>
+    <script src="assets/js/theme.js"></script>
+</div>
