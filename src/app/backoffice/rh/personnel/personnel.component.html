@@ -1,5 +1,12 @@
 <div class="container-fluid">
+    <div style="text-align: left;">
+        <div class="text-md-end dataTables_filter" id="dataTable_filter">
+            <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
+        </div>
+    </div>
+    <br>
     <div class="card shadow">
+        
         <div class="card-header py-3">
             <div class="row">
                 <p class="text-primary m-0 fw-bold"><strong>Gestion des Secretaires</strong></p>
@@ -16,13 +23,6 @@
                                 <option value="100">100</option>
                             </select> </label></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -31,72 +31,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of secretaires._embedded.secretaires">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Secretaires</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'secretaires',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -150,12 +151,6 @@
                             </select> </label></div>
                 </div>
                 <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -164,72 +159,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of laboratoires._embedded.laboratoires">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Laboratoire</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'laboratoires',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -282,13 +278,7 @@
                                 <option value="100">100</option>
                             </select> </label></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
+
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -297,72 +287,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of stocks._embedded.stock">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Stock</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'stocks',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -408,21 +399,8 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6 text-nowrap">
-                    <div id="dataTable_length" class="dataTables_length"><label class="form-label">Show <select class="d-inline-block form-select form-select-sm">
-                                <option value="10" selected>10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> </label></div>
-                </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
+
+
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -431,72 +409,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of rhs._embedded.rhs">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier RH</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'rhs',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -549,13 +528,7 @@
                                 <option value="100">100</option>
                             </select> </label></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
+    
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -564,72 +537,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let d of data._embedded.medecins">
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>{{d.login}}</td>
-                            <td>{{d.type}}</td>
-                            <td>{{d.password}}</td>
+                        <tr *ngFor="let d of medcins._embedded.medecins">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
                             <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Medcins</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'medcins',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -682,13 +656,7 @@
                                 <option value="100">100</option>
                             </select> </label></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
+
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -697,77 +665,79 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of infermiers._embedded.infermiers">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Infermiers</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('infermiers/{{d.idPersonnel}}',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" /></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" /></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"/></div>
+                                                            <div id="modal-footer-1" class="modal-footer"><button class="btn btn-primary btn btn-secondary" type="button" data-bs-dismiss="modal">Fermer</button><button class="btn btn-primary" type="submit">Enregistrer</button></div>
+
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div id="modal-footer-1" class="modal-footer"><button class="btn btn-primary btn btn-secondary" type="button" data-bs-dismiss="modal">Fermer</button><button class="btn btn-primary" type="button">Enregistrer</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -814,13 +784,7 @@
                                 <option value="100">100</option>
                             </select> </label></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="text-md-end dataTables_filter" id="dataTable_filter">
-                        <a class="btn btn-primary" type="button" style="text-align: right; "[routerLink]="['/backoffice/rh/addpersonnel']" routerLinkActive="router-link-active" ><i class="fas fa-plus"></i>&nbsp; Ajouter Personnel</a>
-                        <label class="form-label">   </label>
-                      <label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" /></label>
-                    </div>
-                </div>
+
             </div>
             <div class="table-responsive table mt-2" id="dataTable-1" role="grid">
                 <table class="table my-0" id="dataTable">
@@ -829,72 +793,73 @@
                             <th>Nom</th>
                             <th>Tel</th>
                             <th>CIN</th>
-                            <th>Age</th>
-                            <th>No.Patient</th>
+                            <th>Service</th>
+                            <th>Matricule</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/Me3.jpeg" />Fathi Youssef</td>
-                            <td>066176454</td>
-                            <td>AA7895</td>
-                            <td>33</td>
-                            <td>J45656454</td>
+                        <tr *ngFor="let d of comptabilites._embedded.comptabilites">
+                            <td hidden>{{d.idPersonnel}}</td>
+                            <td>{{d.nom}} {{d.prenom}}</td>
+                            <td>{{d.tel}}</td>
+                            <td>{{d.cin}}</td>
+                            <td>{{d.service}}</td>
+                            <td>{{d.matricule}}</td>
                             <td> <button class="btn text-info" style="margin-left: 5px;" type="submit"><a href="ManageDetailsPersonnel.html"><i class="fa fa-eye" style="font-size: 15px;"></i></a></button><button class="btn text-warning" style="margin-left: 5px;" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop-1"><i class="fas fa-user-edit" style="font-size: 15px;"></i></button>
                                 <div id="staticBackdrop-1" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
                                     <div id="modaldialog-1" class="modal-dialog">
                                         <div id="modalcontent-1" class="modal-content">
                                             <div id="modalheader-1" class="modal-header">
-                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Personnel</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
+                                                <h1 id="staticBackdropLabel-1" class="modal-title">Modifier Comptabilite</h1><button class="btn btn-primary btn-close" type="button" data-bs-dismiss="modal"></button>
                                             </div>
                                             <div id="modalbody-1" class="modal-body">
                                                 <div class="card shadow">
                                                     <div class="card-body">
-                                                        <form>
-                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" /></div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" /></div>
+                                                        <form #f="ngForm"  (ngSubmit)="onUpdatePersonnel('{{d.idPersonnel}}/'+'comptabilites',f.value)" >
+                                                            <div class="mb-3"><label class="form-label" for="Nom" id="LabelNom"><strong>Nom :</strong></label><input type="text" class="form-control" id="Nom" placeholder="Nom" name="nom" value="{{d.nom}}" ngModel/></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Prénom :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Prénom" name="prenom" value="{{d.prenom}}"ngModel/></div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>CIN :</strong></label><input type="text" class="form-control" id="CIN" placeholder="CIN" name="cin" value="{{d.cin}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Tél" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Telephone :</strong></label><input type="text" class="form-control" id="tel" placeholder="Tél" name="telephone" value="{{d.tel}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Adresse :</strong></label><input type="text" class="form-control" id="Adresse" placeholder="Adresse" name="adresse" value="{{d.adresse}}ngModel"/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" /></div>
+                                                                    <div class="col-12"><label class="form-label">Date de Naissance</label><input class="form-control" type="date" name="dateNaissance" value="{{d.dateNaissance}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Email :</strong></label><input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{d.email}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Statut familial :</strong></label><input type="text" class="form-control" id="situation" placeholder="Statut familial" name="situationFamiliale" value="{{d.situationFamiliale}}" ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Nombre d&#39;enfant :</strong></label><input type="text" class="form-control" id="email" placeholder="Nombre d&#39;enfant" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Service :</strong></label><input type="text" class="form-control" id="email" placeholder="Service" name="service" value="{{d.service}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>CNSS :</strong></label><input type="text" class="form-control" id="telephone" placeholder="Assurance Social" name="cnss" value="{{d.cnss}}"ngModel/></div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="email" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Sexe :</strong></label><input type="text" class="form-control" id="email" placeholder="Sexe" name="sexe" value="{{d.sexe}}"ngModel/></div>
                                                                 </div>
                                                                 <div class="col">
-                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Statut familial" name="telephone" /></div>
+                                                                    <div class="mb-3"><label class="form-label" for="country"><strong>Date d&#39;embauche :</strong></label><input type="date" class="form-control" id="telephone" placeholder="Date d'embauche" name="dateEmbauche" value="{{d.dateEmbauche}}" ngModel/></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Intitulé diplome :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="prenom" /></div>
+                                                            <div class="mb-3"><label class="form-label" for="address"><strong>Matricule :</strong></label><input type="text" class="form-control" id="prenom" placeholder="Diplome" name="matricule" value="{{d.matricule}}"ngModel/></div>
                                                         </form>
                                                     </div>
                                                 </div>

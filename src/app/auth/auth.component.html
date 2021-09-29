@@ -11,21 +11,30 @@
                             <div class="col-lg-4">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h4 class="text-dark mb-4">SEHATI-صحتي</h4>
+                                        <h4 class="text-primary mb-4">SIHATI-صحتي</h4>
                                     </div>
-                                    <form #f="ngForm" (ngSubmit)="loginx(f.value.login,f.value.pass)">
-                                        <img class="mb-4" src="https://cdn4.iconfinder.com/data/icons/business-and-e-commerce/64/Employee_man-512.png" alt="" width="40%" height="40%" >
-                                        <h1 class="h3 mb-3 fw-normal">Authentification</h1>
+                                    <form #f="ngForm" (ngSubmit)="loginx(f.value.login,f.value.pass,f.value.gender)">
+                                        <!-- <img class="mb-4" src="https://cdn4.iconfinder.com/data/icons/business-and-e-commerce/64/Employee_man-512.png" alt="" width="40%" height="40%" > -->
+                                        <h1 class="h3 mb-3 fw-normal text-center">Authentification</h1>
                                         <br><br>
                                         <input type="email" id="inputEmail" class="form-control" name="login" placeholder="Adresse e-mail" required autofocus ngModel>
                                         <br><br>
                                         <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Mot de pass" required ngModel>
                                         <p style="color:red" *ngIf="failed"> Email ou mot de passe incorrect </p>
                                         <br><br>
+                                        <input type="radio" value="medcin" name="gender" ngModel> Medcin
+<input type="radio" value="infermier" name="gender" ngModel> Infermier
+<input type="radio" value="comptabilite" name="gender" ngModel> Comptabilite
+<input type="radio" value="rh" name="gender" ngModel> RH
+<input type="radio" value="laboratoire" name="gender" ngModel> Laboratoire
+<input type="radio" value="stock" name="gender" ngModel> Stock
+
+<br><br>
+
                                         <button class="w-100 btn btn-lg btn-primary" type="submit"  style="width: 250px">Connexion</button>
                                       </form>
-                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register.html">Create an Account!</a></div>
+                                    <!-- <div class="text-center"><a class="small" href="#">Forgot Password?</a></div>
+                                    <div class="text-center"><a class="small" href="#">Create an Account!</a></div> -->
                                 </div>
                             </div>
                         </div>
